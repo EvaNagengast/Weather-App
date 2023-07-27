@@ -3,7 +3,7 @@ body {
   background-image: url("C:/Users/nagen/Desktop/Coding/Pro/Weather-App/media/background-clouds.png");
   background-size: cover;
 }
-
+/* App */
 .weatherApp {
   background-color: #a4d4eb;
   margin: 20px auto;
@@ -12,8 +12,11 @@ body {
   border-radius: 5px;
 }
 
-/* App */
 /* left side */
+.currentTime{
+  text-align: center;
+  margin: 4px 0 4px 0;
+}
 /* circle */
 /* info box */
 /* tip box */
