@@ -2,7 +2,7 @@
 body {
   background-image: url("C:/Users/nagen/Desktop/Coding/Pro/Weather-App/media/background-clouds.png");
   background-size: cover;
-  font-family:'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 /* App */
 .weatherApp {
@@ -20,12 +20,42 @@ body {
   margin: 4px 0 4px 0;
 }
 /* circle */
-h1 {
-  font-family:  'Cardo', serif; 
+
+
+.circle {
+  background-color: rgb(252, 213, 39);
+  position: absolute;
+  top: -15px;
+  left: -20px;
+  width: 140px;
+  height: 140px;
+  z-index: -1;
+  border-radius: 50%;
+}h1 {
+  font-family: "Cardo", serif;
+  font-size: 60px;
   font-weight: 900;
-  color: rgba(250, 128, 114, 0.575);
+  color: rgb(250, 128, 114);
   /* text-shadow: -3px 1px rgba(255, 203, 0, 1); */
   text-align: center;
+}
+h2{
+  text-align: center;
+}
+p{text-align: center;}
+
+.weatherCondition{
+ margin: 8px;
+  border: 3px solid #00293c;
+  padding: 0;
+}
+.listWeatherCondition{
+margin: 0;}
+
+.tips{
+  margin: 8px;
+  border: 3px solid #00293c;
+  min-height: 100px;
 }
 /* info box */
 /* tip box */
@@ -40,39 +70,45 @@ h1 {
 .searchInput {
   font-family: sans-serif;
   text-align: center;
-  color: rgb(255, 179, 0);
+  color: rgb(250, 128, 114);
+  font-family: "Cardo", serif;
   font-weight: 600;
-  background-color: #a4d5ebbf;
+  background-color: #ccedfc;
   margin: 10px auto;
-  border: 3px solid;
+  border: 3px solid #005270d8;
   max-width: 100px;
   border-radius: 2px;
 }
 
 .searchInput::placeholder {
-  color: #00aeff;
+  color: #00527067;
+  font-family: "Josefin Sans", sans-serif;
 }
 .searchInput:focus {
-  border-color: rgb(0, 174, 255);
-  outline: #ffd000;
+  outline: #ffffff;
+  outline-style: double;
 }
 
 .searchButton {
+  font-family: "Josefin Sans", sans-serif;
   padding: 4px 10px;
-  color: #ffd000;
-  background-color: #00aeff;
-  font-family: serif;
+  color: #00293c;
+  background-color: #ade4fd;
+
   border-radius: 2px;
   border: none;
+  box-shadow: 1px 1px 1px 1px rgba(61, 121, 148, 0.315);
 }
 
 .currentSearchButton {
+  font-family: "Josefin Sans", sans-serif;
   padding: 4px 10px;
-  color: #ffd000;
-  background-color: #00aeff;
-  font-family: "DM Serif Display", serif;
+  color: #00293c;
+  background-color: #ade4fd;
+
   border-radius: 2px;
   border: none;
+  box-shadow: 1px 1px 1px 1px rgba(61, 121, 148, 0.315);
 }
 
 .search {
@@ -82,6 +118,7 @@ h1 {
 /* forecast */
 ul {
   list-style: none;
+  line-height: 36px;
 }
 /* footer */
 footer {
