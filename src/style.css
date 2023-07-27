@@ -103,7 +103,8 @@ p {
   box-shadow: 1px 1px 1px 1px rgba(61, 121, 148, 0.315);
 }
 
-.currentSearchButton {
+.currentSearchButton, .moonButton
+ {
   font-family: "Josefin Sans", sans-serif;
   padding: 4px 10px;
   color: #00293c;
