@@ -74,7 +74,7 @@ p {
   font-family: "Caveat", cursive;
   text-align: center;
   color: rgb(250, 128, 114);
- font-size: 18px;
+  font-size: 18px;
   font-weight: 600;
   background-color: #ccedfc;
   margin: 10px auto;
@@ -92,7 +92,7 @@ p {
   outline-style: double;
 }
 
-.searchButton {
+.citySearchButton {
   font-family: "Josefin Sans", sans-serif;
   padding: 4px 10px;
   color: #00293c;
@@ -103,8 +103,8 @@ p {
   box-shadow: 1px 1px 1px 1px rgba(61, 121, 148, 0.315);
 }
 
-.currentSearchButton, .moonButton
- {
+.currentSearchButton,
+.moonButton {
   font-family: "Josefin Sans", sans-serif;
   padding: 4px 10px;
   color: #00293c;

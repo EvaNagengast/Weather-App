@@ -79,19 +79,20 @@
         <div class="col-6">
           <!-- city search -->
           <div class="search">
-            <form class="searchForm">
+            <form class="searchForm" id="search-form">
               <input
                 type="text"
                 placeholder="City"
                 autofocus="on"
                 autocomplete="off"
+                id="search-input"
                 class="searchInput"
               />
-              <input type="submit" value="go" class="searchButton" />
+              <input type="submit" value="go" class="citySearchButton" id="city-search-button"/>
             </form>
           </div>
           
-            <button type="button" value="current" class="currentSearchButton">
+            <button type="button" value="current" class="currentSearchButton" id="current-search-button">
               pin
             </button>
           <button type="button" value="current" class="moonButton">
