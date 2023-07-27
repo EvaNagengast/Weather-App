@@ -1,1 +1,5 @@
-Project WeatherApp
+add footer ith credit
+Coded with love bye Eva nagengast 
+open-sourced code on Github (link_blank) hosted by netlify
+
+ideas: add moon button?

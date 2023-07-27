@@ -1,3 +1,21 @@
+/* background*/
+body {
+  background-image: url("C:/Users/nagen/Desktop/Coding/Pro/Weather-App/media/background-clouds.png");
+  background-size: cover;
+}
+
+.weatherApp {
+  background-color: #a4d4eb;
+}
+/* App */
+/* left side */
+/* circle */
+/* info box */
+/* tip box */
+/* right side */
+/* search */
+/* forecast */
+/* footer */
 h1 {
   color: salmon;
 }
