@@ -10,26 +10,80 @@ body {
   box-shadow: 0px 0px 17px 9px rgba(3, 89, 129, 0.3);
   opacity: 90%;
   border-radius: 5px;
+  max-width: 600px;
 }
 
 /* left side */
-.currentTime{
+.currentTime {
   text-align: center;
   margin: 4px 0 4px 0;
 }
-/* circle */h1 {
+/* circle */
+h1 {
   color: rgba(250, 128, 114, 0.575);
   text-shadow: -3px 1px rgba(255, 203, 0, 1);
-  
-
 }
 /* info box */
 /* tip box */
 /* right side */
 /* search */
+
+.searchForm {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.searchInput {
+  font-family: sans-serif;
+  text-align: center;
+  color: rgb(255, 179, 0);
+  font-weight: 600;
+  background-color: #a4d5ebbf;
+  margin: 10px auto;
+  border: 3px solid;
+  max-width: 100px;
+  border-radius: 2px;
+}
+
+.searchInput::placeholder {
+  color: #00aeff;
+}
+.searchInput:focus {
+   border-color: rgb(0, 174, 255);
+  outline:#ffd000
+  
+}
+
+.searchButton {
+  padding: 4px 10px;
+  color: #ffd000;
+  background-color: #00aeff;
+  font-family:  serif;
+  border-radius: 2px;
+  border: none;
+}
+
+.currentSearchButton {
+  padding: 4px 10px;
+  color: #ffd000;
+  background-color: #00aeff;
+  font-family: "DM Serif Display", serif;
+  border-radius: 2px;
+  border: none;
+}
+
+.search {
+  display: inline-block; 
+}
+
+
+
 /* forecast */
+ul {
+  list-style: none;
+}
 /* footer */
-footer{
+footer {
   text-align: center;
   font-size: 14px;
   color: rgb(255, 213, 0);
