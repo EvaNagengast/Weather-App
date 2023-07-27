@@ -21,7 +21,6 @@ body {
 }
 /* circle */
 
-
 .circle {
   background-color: rgb(252, 213, 39);
   position: absolute;
@@ -31,28 +30,32 @@ body {
   height: 140px;
   z-index: -1;
   border-radius: 50%;
-}h1 {
-  font-family: "Cardo", serif;
-  font-size: 60px;
+}
+h1 {
+  font-family: "Caveat", cursive;
+  font-size: 90px;
   font-weight: 900;
   color: rgb(250, 128, 114);
   /* text-shadow: -3px 1px rgba(255, 203, 0, 1); */
   text-align: center;
 }
-h2{
+h2 {
   text-align: center;
 }
-p{text-align: center;}
+p {
+  text-align: center;
+}
 
-.weatherCondition{
- margin: 8px;
+.weatherCondition {
+  margin: 8px;
   border: 3px solid #00293c;
   padding: 0;
 }
-.listWeatherCondition{
-margin: 0;}
+.listWeatherCondition {
+  margin: 0;
+}
 
-.tips{
+.tips {
   margin: 8px;
   border: 3px solid #00293c;
   min-height: 100px;
@@ -68,10 +71,10 @@ margin: 0;}
 }
 
 .searchInput {
-  font-family: sans-serif;
+  font-family: "Caveat", cursive;
   text-align: center;
   color: rgb(250, 128, 114);
-  font-family: "Cardo", serif;
+ font-size: 18px;
   font-weight: 600;
   background-color: #ccedfc;
   margin: 10px auto;
