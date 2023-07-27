@@ -7,7 +7,7 @@
     <!-- favicon -->
     <link rel="shortcut icon" href="favicon.ico.png" type="image/x-icon" />
     <!-- axios -->
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Bootstrap -->
     <link
       rel="stylesheet"
@@ -63,14 +63,27 @@
         <div class="col-6">
           <div class="currentTime">Day,Date,Year, Time</div>
           <div class="circle"></div>
-          <h1 class="city">Batman</h1>
-          <h2>ICON</h2>
-          <p>weather condition</p>
+          <h1 class="city" id="main-city">Batman</h1>
+          <!-- Temp -->
+          <div class="row">
+            <div class="col-5"><h2>ICON</h2></div>
+            <div class="col-7">
+              <div class="todayTemperature" id="today-temperature">-49</div>
+              <div class="todayUnit">
+                <span class="celsius" id="celsius">°C</span>|
+                <span class="fahrenheit" id="fahrenheit">°F</span>
+              </div>
+            </div>
+          </div>
+
+          <!--  -->
+          <p class="weatherNow" id="weather-now">weather condition</p>
+
           <div class="weatherCondition">
             <ul class="listWeatherCondition">
-              <li>feels like</li>
-              <li>Humidity</li>
-              <li>wind</li>
+              <li>feels like: <span class="feels" id="feels">0</span>C</li>
+              <li>Humidity: <span class="humid" id="humid"></span>%</li>
+              <li>wind: <span class="wind" id="wind">0</span>km/h</li>
             </ul>
           </div>
           <div class="tips">Tips for the weather</div>
@@ -88,16 +101,24 @@
                 id="search-input"
                 class="searchInput"
               />
-              <input type="submit" value="go" class="citySearchButton" id="city-search-button"/>
+              <input
+                type="submit"
+                value="go"
+                class="citySearchButton"
+                id="city-search-button"
+              />
             </form>
           </div>
-          
-            <button type="button" value="current" class="currentSearchButton" id="current-search-button">
-              pin
-            </button>
-          <button type="button" value="current" class="moonButton">
-              moon
-            </button>
+
+          <button
+            type="button"
+            value="current"
+            class="currentSearchButton"
+            id="current-search-button"
+          >
+            pin
+          </button>
+          <button type="button" value="current" class="moonButton">moon</button>
           <!-- forecast -->
           <ul>
             <li>
