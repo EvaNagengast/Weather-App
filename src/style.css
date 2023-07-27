@@ -2,6 +2,7 @@
 body {
   background-image: url("C:/Users/nagen/Desktop/Coding/Pro/Weather-App/media/background-clouds.png");
   background-size: cover;
+  font-family:'Josefin Sans', sans-serif;
 }
 /* App */
 .weatherApp {
@@ -20,8 +21,11 @@ body {
 }
 /* circle */
 h1 {
+  font-family:  'Cardo', serif; 
+  font-weight: 900;
   color: rgba(250, 128, 114, 0.575);
-  text-shadow: -3px 1px rgba(255, 203, 0, 1);
+  /* text-shadow: -3px 1px rgba(255, 203, 0, 1); */
+  text-align: center;
 }
 /* info box */
 /* tip box */
@@ -49,16 +53,15 @@ h1 {
   color: #00aeff;
 }
 .searchInput:focus {
-   border-color: rgb(0, 174, 255);
-  outline:#ffd000
-  
+  border-color: rgb(0, 174, 255);
+  outline: #ffd000;
 }
 
 .searchButton {
   padding: 4px 10px;
   color: #ffd000;
   background-color: #00aeff;
-  font-family:  serif;
+  font-family: serif;
   border-radius: 2px;
   border: none;
 }
@@ -73,10 +76,8 @@ h1 {
 }
 
 .search {
-  display: inline-block; 
+  display: inline-block;
 }
-
-
 
 /* forecast */
 ul {
