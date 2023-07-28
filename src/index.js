@@ -54,13 +54,50 @@ function updateTime(cityTimeShift) {
     "#current-time"
   ).innerHTML = `${day}, ${date}.${month}, ${hour}:${minute}`;
 }
+//change icon
 
+function changeIcon(iconName) {
+  if (iconName === "01d") {
+    document.querySelector(".icon").innerHTML = "wb_sunny";
+  }
+  if (iconName === "02d") {
+    document.querySelector(".icon").innerHTML = "partly_cloudy_day";
+  }
+
+  if (iconName === "03d") {
+    document.querySelector(".icon").innerHTML = "cloud";
+  }
+
+  if (iconName === "04d") {
+    document.querySelector(".icon").innerHTML = "filter_drama";
+  }
+
+  if (iconName === "09d") {
+    document.querySelector(".icon").innerHTML = " rainy_light";
+  }
+
+  if (iconName === "10d") {
+    document.querySelector(".icon").innerHTML = "rainy";
+  }
+
+  if (iconName === "11d") {
+    document.querySelector(".icon").innerHTML = "thunderstorm";
+  }
+
+  if (iconName === "13d") {
+    document.querySelector(".icon").innerHTML = " cloudy_snowing";
+  }
+
+  if (iconName === "50d") {
+    document.querySelector(".icon").innerHTML = "foggy";
+  }
+}
 //
 // City search Buttons
 //
 
 function cityInfo(cityInformation) {
-  console.log(cityInformation.data);
+
   document.querySelector("#main-city").innerHTML = cityInformation.data.name;
   document.querySelector("#weather-now").innerHTML =
     cityInformation.data.weather[0].description;
@@ -75,8 +112,9 @@ function cityInfo(cityInformation) {
   document.querySelector("#today-temperature").innerHTML = Math.round(
     cityInformation.data.main.temp
   );
-
   updateTime(cityInformation.data.timezone);
+ 
+  changeIcon(cityInformation.data.weather[0].icon);
 }
 
 function getInputCity(city) {
@@ -109,7 +147,5 @@ document.querySelector("#search-form").addEventListener("submit", citySubmit);
 document
   .querySelector("#current-search-button")
   .addEventListener("click", currentSubmit);
-console.log("🐈‍⬛");
-console.log("🐈‍");
 
 getInputCity("London");
