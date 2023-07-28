@@ -1,4 +1,55 @@
 //
+//
+// current time
+let months = [
+  // "Jan",  "Feb",  "Mar",  "Apr",  "May",  "Jun",  "Jul",  "Aug",  "Sep",  "Oct",  "Nov",  "Dec",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+let days = [
+  //"Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+function updateTime() {
+  let now = new Date();
+  let day = days[now.getDay()];
+  let date = now.getDate();
+  let month = months[now.getMonth()];
+  let hour = now.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+
+  let minute = now.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+
+  document.querySelector(
+    "#current-time"
+  ).innerHTML = `${day}, ${date}.${month}, ${hour}:${minute}`;
+}
+updateTime();
+setInterval(updateTime, 60000);
+
+//
 // City search Buttons
 //
 
@@ -18,7 +69,7 @@ function cityInfo(cityInformation) {
   document.querySelector("#today-temperature").innerHTML = Math.round(
     cityInformation.data.main.temp
   );
-  //document.querySelector("#main-city").innerHTML = cityInformation.data.name;
+  //document.querySelector("#current-time").innerHTML = dateUpdate(cityInformation.data.time);
 }
 
 function getInputCity(city) {
@@ -54,50 +105,4 @@ document
 console.log("🐈‍⬛");
 console.log("🐈‍");
 
-//
-//
-// current time
-let months = [
-  // "Jan",  "Feb",  "Mar",  "Apr",  "May",  "Jun",  "Jul",  "Aug",  "Sep",  "Oct",  "Nov",  "Dec",
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let days = [
-  //"Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
-let now = new Date();
-
-let day = days[now.getDay()];
-let date = now.getDate();
-let month = months[now.getMonth()];
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
-}
-
-let minute = now.getMinutes();
-if (minute < 10) {
-  minute = `0${minute}`;
-}
-
-document.querySelector(
-  "#current-time"
-).innerHTML = `${day}, ${date}.${month}, ${hour}:${minute}`;
+getInputCity("London");
