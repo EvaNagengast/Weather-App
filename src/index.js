@@ -27,8 +27,16 @@ let days = [
   "Saturday",
 ];
 
-function updateTime() {
+function updateTime(cityTimeShift) {
   let now = new Date();
+
+  if (cityTimeShift !== undefined) {
+    let timeshiftInMilliseconds = cityTimeShift * 1000;
+    let localTimezoneInMilliseconds = now.getTimezoneOffset() * 60000;
+    now = new Date(
+      now.getTime() + timeshiftInMilliseconds + localTimezoneInMilliseconds
+    );
+  }
   let day = days[now.getDay()];
   let date = now.getDate();
   let month = months[now.getMonth()];
@@ -46,8 +54,6 @@ function updateTime() {
     "#current-time"
   ).innerHTML = `${day}, ${date}.${month}, ${hour}:${minute}`;
 }
-updateTime();
-setInterval(updateTime, 60000);
 
 //
 // City search Buttons
@@ -69,7 +75,8 @@ function cityInfo(cityInformation) {
   document.querySelector("#today-temperature").innerHTML = Math.round(
     cityInformation.data.main.temp
   );
-  //document.querySelector("#current-time").innerHTML = dateUpdate(cityInformation.data.time);
+
+  updateTime(cityInformation.data.timezone);
 }
 
 function getInputCity(city) {

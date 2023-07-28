@@ -4,6 +4,11 @@ body {
   background-size: cover;
   font-family: "Josefin Sans", sans-serif;
 }
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 48;
+}
+
 /* App */
 .weatherApp {
   background-color: #a4d4eb;
@@ -14,13 +19,7 @@ body {
   max-width: 600px;
 }
 
-/* left side */
-.currentTime {
-  text-align: center;
-  margin: 4px 0 4px 0;
-}
 /* circle */
-
 .circle {
   background-color: rgb(252, 213, 39);
   position: absolute;
@@ -31,16 +30,26 @@ body {
   z-index: -1;
   border-radius: 50%;
 }
+/* left side */
+.currentTime {
+  text-align: center;
+  margin: 4px 0 4px 0;
+}
+
 h1 {
   font-family: "Caveat", cursive;
-  font-size: 80px;
+  font-size: 70px;
   font-weight: 900;
   color: rgb(250, 128, 114);
   /* text-shadow: -3px 1px rgba(255, 203, 0, 1); */
   text-align: center;
 }
-h2 {
+
+.icon {
   text-align: center;
+  color: #fdd000;
+font-size: 100px;
+  margin: 10px 0 0 0;
 }
 .todayTemperature {
   padding: auto;
