@@ -5,10 +5,6 @@ body {
   font-family: "Josefin Sans", sans-serif;
 }
 
-.material-symbols-outlined {
-  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 48;
-}
-
 /* App */
 .weatherApp {
   background-color: #a4d4eb;
@@ -45,22 +41,26 @@ h1 {
   text-align: center;
 }
 
+/* Icons */
 
-
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 48;
+}
 .dayIcon {
   text-align: center;
   color: #fdd000;
-font-size: 96px;
-  margin: 10px 0 0 0;
+  font-size: 83px;
+  margin: 10px 0 0 10px;
 }
-.nightIcon{
-    text-align: center;
+.nightIcon {
+  text-align: center;
   color: #454383;
-font-size: 96px;
-  margin: 10px 0 0 0;
+  font-size: 83px;
+  margin: 10px 0 0 10px;
 }
 .todayTemperature {
-  padding: auto;
+  padding: 0;
+  line-height: 95px;
   font-size: 60px;
   font-weight: 900;
   display: inline-block;
@@ -69,7 +69,7 @@ font-size: 96px;
 .todayUnit {
   display: inline-block;
   font-size: 16px;
-  line-height: 9px;
+  line-height: 50px;
   margin-top: 6px;
   padding-left: 6px;
   vertical-align: top;
@@ -84,23 +84,59 @@ font-size: 96px;
   color: #ffe46a;
 }
 p {
+  font-size: 25px;
   text-align: center;
 }
-
-.weatherCondition {
-  margin: 8px;
-  border: 3px solid #00293c;
+.listWeatherCondition {
+  text-align: center;
+  margin: 0;
   padding: 0;
 }
-.listWeatherCondition {
-  margin: 0;
+.decorationr {
+  color: white;
+  padding: 0 0 0 10px;
+}
+.decorationl {
+  color: white;
+  padding: 0 10px 0 0;
+}
+.feels {
+  padding: 0 10px 0 10px;
+  border: 3px solid #8c8f8f00;
+  box-shadow: 0px 0px 5px 1px #ffffff4f;
+  min-width: 50px;
+  max-width: 240px;
+  border-radius: 8px;
+}
+.humid {
+  position: relative;
+  left: 10px;
+  margin: 8px;
+  padding: 0 10px 0 10px;
+  border: 3px solid #8c8f8f00;
+  box-shadow: 0px 0px 5px 1px #ffffff4f;
+  min-width: 50px;
+  max-width: 240px;
+  border-radius: 8px;
+}
+.wind {
+  position: relative;
+  left: 20px;
+  margin: 8px;
+  padding: 0 10px 0 10px;
+  border: 3px solid #8c8f8f00;
+  box-shadow: 0px 0px 5px 1px #ffffff4f;
+  min-width: 50px;
+  max-width: 240px;
+  border-radius: 8px;
 }
 
 .tips {
-  margin: 8px;
-  border: 3px solid #00293c;
+  margin: 8px auto;
+  border: 3px solid #454383;
   min-height: 100px;
 }
+
 /* info box */
 /* tip box */
 /* right side */
