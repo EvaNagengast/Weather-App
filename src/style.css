@@ -45,13 +45,15 @@ h1 {
   text-align: center;
 }
 
-.icon {
+
+
+.dayIcon {
   text-align: center;
   color: #fdd000;
 font-size: 96px;
   margin: 10px 0 0 0;
 }
-.nighttimeIcon{
+.nightIcon{
     text-align: center;
   color: #454383;
 font-size: 96px;

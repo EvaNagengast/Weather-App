@@ -58,59 +58,64 @@ function updateTime(cityTimeShift) {
 //
 //
 //change icon
+//
+//
+//
 
 function changeIcon(iconName) {
+  let icon = document.querySelector("#iconT");
+  icon.classList.remove("dayIcon", "nightIcon");
 
-  if (iconName === "01d") {
-    document.querySelector(".icon").innerHTML = "wb_sunny";
+  if (iconName.endsWith("d")) {
+    icon.classList.add("dayIcon");
+  } else {
+    icon.classList.add("nightIcon");
   }
 
-  //if (iconName === "01n") {
-  //  let icon = document.querySelector("#iconT");
- //   icon.innerHTML = "wb_sunny";
- //   icon.classList.remove("icon");
- //   icon.classList.add("nighticon");
- // }
+  changeDayIcon(iconName);
+}
 
-  if (iconName === "02d") {
-    document.querySelector(".icon").innerHTML = "partly_cloudy_day";
+function changeDayIcon(iconName) {
+  let name = iconName;
+  let iconID = name.substring(0, 2);
+
+  if (iconID === "01") {
+    document.querySelector("#iconT").innerHTML = "wb_sunny";
   }
 
-  if (iconName === "03d") {
-    document.querySelector(".icon").innerHTML = "cloud";
-  }
-  if (iconName === "02n") {
-    let icon = document.querySelector("#iconT");
-    icon.innerHTML = "cloud";
-    icon.classList.remove("icon");
-    icon.classList.add("nighticon");
+  if (iconID === "02") {
+    document.querySelector("#iconT").innerHTML = "partly_cloudy_day";
   }
 
-
-  if (iconName === "04d") {
-    document.querySelector(".icon").innerHTML = "filter_drama";
+  if (iconID === "03") {
+    document.querySelector("#iconT").innerHTML = "cloud";
   }
 
-  if (iconName === "09d") {
-    document.querySelector(".icon").innerHTML = " rainy_light";
+  if (iconID === "04") {
+    document.querySelector("#iconT").innerHTML = "filter_drama";
   }
 
-  if (iconName === "10d") {
-    document.querySelector(".icon").innerHTML = "rainy";
+  if (iconID === "09") {
+    document.querySelector("#iconT").innerHTML = " rainy_light";
   }
 
-  if (iconName === "11d") {
-    document.querySelector(".icon").innerHTML = "thunderstorm";
+  if (iconID === "10") {
+    document.querySelector("#iconT").innerHTML = "rainy";
   }
 
-  if (iconName === "13d") {
-    document.querySelector(".icon").innerHTML = " cloudy_snowing";
+  if (iconID === "11") {
+    document.querySelector("#iconT").innerHTML = "thunderstorm";
   }
 
-  if (iconName === "50d") {
-    document.querySelector(".icon").innerHTML = "foggy";
+  if (iconID === "13") {
+    document.querySelector("#iconT").innerHTML = " cloudy_snowing";
+  }
+
+  if (iconID === "50") {
+    document.querySelector("#iconT").innerHTML = "foggy";
   }
 }
+
 //
 // City search Buttons
 //
@@ -131,7 +136,6 @@ function cityInfo(cityInformation) {
     cityInformation.data.main.temp
   );
   updateTime(cityInformation.data.timezone);
-
   changeIcon(cityInformation.data.weather[0].icon);
 }
 
@@ -166,4 +170,4 @@ document
   .querySelector("#current-search-button")
   .addEventListener("click", currentSubmit);
 
-getInputCity("London");
+getInputCity("Sydney");
