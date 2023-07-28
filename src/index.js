@@ -117,10 +117,13 @@ function changeDayIcon(iconName) {
 }
 
 //
+//
 // City search Buttons
+//
 //
 
 function cityInfo(cityInformation) {
+  console.log(cityInformation);
   document.querySelector("#main-city").innerHTML = cityInformation.data.name;
   document.querySelector("#weather-now").innerHTML =
     cityInformation.data.weather[0].description;
@@ -143,6 +146,7 @@ function getInputCity(city) {
   let apikey = "a5c55c774ac8198c087358853c4a79a9";
   let units = "metric"; // or let units = "metric"
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apikey}`;
+
   axios.get(url).then(cityInfo);
 }
 
@@ -171,3 +175,4 @@ document
   .addEventListener("click", currentSubmit);
 
 getInputCity("Sydney");
+
