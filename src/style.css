@@ -51,6 +51,12 @@ h1 {
 font-size: 96px;
   margin: 10px 0 0 0;
 }
+.nighttimeIcon{
+    text-align: center;
+  color: #454383;
+font-size: 96px;
+  margin: 10px 0 0 0;
+}
 .todayTemperature {
   padding: auto;
   font-size: 60px;

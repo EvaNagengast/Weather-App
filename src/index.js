@@ -54,12 +54,24 @@ function updateTime(cityTimeShift) {
     "#current-time"
   ).innerHTML = `${day}, ${date}.${month}, ${hour}:${minute}`;
 }
+//
+//
+//
 //change icon
 
 function changeIcon(iconName) {
+
   if (iconName === "01d") {
     document.querySelector(".icon").innerHTML = "wb_sunny";
   }
+
+  //if (iconName === "01n") {
+  //  let icon = document.querySelector("#iconT");
+ //   icon.innerHTML = "wb_sunny";
+ //   icon.classList.remove("icon");
+ //   icon.classList.add("nighticon");
+ // }
+
   if (iconName === "02d") {
     document.querySelector(".icon").innerHTML = "partly_cloudy_day";
   }
@@ -67,6 +79,13 @@ function changeIcon(iconName) {
   if (iconName === "03d") {
     document.querySelector(".icon").innerHTML = "cloud";
   }
+  if (iconName === "02n") {
+    let icon = document.querySelector("#iconT");
+    icon.innerHTML = "cloud";
+    icon.classList.remove("icon");
+    icon.classList.add("nighticon");
+  }
+
 
   if (iconName === "04d") {
     document.querySelector(".icon").innerHTML = "filter_drama";
@@ -97,7 +116,6 @@ function changeIcon(iconName) {
 //
 
 function cityInfo(cityInformation) {
-
   document.querySelector("#main-city").innerHTML = cityInformation.data.name;
   document.querySelector("#weather-now").innerHTML =
     cityInformation.data.weather[0].description;
@@ -113,7 +131,7 @@ function cityInfo(cityInformation) {
     cityInformation.data.main.temp
   );
   updateTime(cityInformation.data.timezone);
- 
+
   changeIcon(cityInformation.data.weather[0].icon);
 }
 
