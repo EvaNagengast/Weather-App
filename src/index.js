@@ -135,9 +135,10 @@ function cityInfo(cityInformation) {
   document.querySelector("#wind").innerHTML = Math.round(
     cityInformation.data.wind.speed
   );
-  document.querySelector("#today-temperature").innerHTML = Math.round(
-    cityInformation.data.main.temp
-  );
+  celsiusTemperature = cityInformation.data.main.temp;
+  document.querySelector("#today-temperature").innerHTML =
+    Math.round(celsiusTemperature);
+
   updateTime(cityInformation.data.timezone);
   changeIcon(cityInformation.data.weather[0].icon);
 }
@@ -168,6 +169,31 @@ function currentSubmit(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getCurrentCity);
 }
+// change temperature
+
+function changetoFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#today-temperature");
+  let fahrenheit = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheit);
+  document.querySelector("#celsius").classList.add("notactive");
+    document.querySelector("#fahrenheit").classList.remove("notactive");
+}
+
+function changetoCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#today-temperature");
+
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  document.querySelector("#fahrenheit").classList.add("notactive");
+    document.querySelector("#celsius").classList.remove("notactive");
+}
+
+let celsiusTemperature = null;
+document
+  .querySelector("#fahrenheit")
+  .addEventListener("click", changetoFahrenheit);
+document.querySelector("#celsius").addEventListener("click", changetoCelsius);
 
 document.querySelector("#search-form").addEventListener("submit", citySubmit);
 document
@@ -175,4 +201,3 @@ document
   .addEventListener("click", currentSubmit);
 
 getInputCity("Sydney");
-

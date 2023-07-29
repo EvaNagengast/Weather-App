@@ -58,6 +58,7 @@ h1 {
   font-size: 83px;
   margin: 10px 0 0 10px;
 }
+/* display Temperature */
 .todayTemperature {
   padding: 0;
   line-height: 95px;
@@ -74,7 +75,13 @@ h1 {
   padding-left: 6px;
   vertical-align: top;
 }
-
+.celsius,
+.fahrenheit {
+  font-weight: bolder;
+}
+.notactive {
+  color: rgba(0, 0, 0, 0.288);
+}
 .celsius:hover {
   cursor: pointer;
   color: #ffe46a;
@@ -83,6 +90,7 @@ h1 {
   cursor: pointer;
   color: #ffe46a;
 }
+/* display weather conditions */
 p {
   font-size: 25px;
   text-align: center;
@@ -101,6 +109,7 @@ p {
   padding: 0 10px 0 0;
 }
 .feels {
+  margin: 8px;
   padding: 0 10px 0 10px;
   border: 3px solid #8c8f8f00;
   box-shadow: 0px 0px 5px 1px #ffffff4f;
@@ -109,7 +118,6 @@ p {
   border-radius: 8px;
 }
 .humid {
-  
   margin: 8px;
   padding: 0 10px 0 10px;
   border: 3px solid #8c8f8f00;
@@ -119,7 +127,6 @@ p {
   border-radius: 8px;
 }
 .wind {
- 
   margin: 8px;
   padding: 0 10px 0 10px;
   border: 3px solid #8c8f8f00;
