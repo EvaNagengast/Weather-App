@@ -1,5 +1,7 @@
 // current time
-function updateTime(cityTimeShift) {
+//
+
+function updateTime(apiInfo) {      
   let months = [
     // "Jan",  "Feb",  "Mar",  "Apr",  "May",  "Jun",  "Jul",  "Aug",  "Sep",  "Oct",  "Nov",  "Dec",
     "January",
@@ -27,8 +29,9 @@ function updateTime(cityTimeShift) {
   ];
   let now = new Date();
 
-  if (cityTimeShift !== undefined) {
-    let timeshiftInMilliseconds = cityTimeShift * 1000;
+  let timeshift = apiInfo.data.timezone;
+  if (timeshift !== undefined) {
+    let timeshiftInMilliseconds = timeshift * 1000;
     let localTimezoneInMilliseconds = now.getTimezoneOffset() * 60000;
     now = new Date(
       now.getTime() + timeshiftInMilliseconds + localTimezoneInMilliseconds
@@ -50,72 +53,112 @@ function updateTime(cityTimeShift) {
   document.querySelector(
     "#current-time"
   ).innerHTML = `${day}, ${date}.${month}, ${hour}:${minute}`;
-}
+} 
 
-//change icon
 
-function changeIcon(iconName) {
+function updateTimeApi(cityname) {          
+  let apikey = "a5c55c774ac8198c087358853c4a79a9";
+  let units = "metric"; // or let units = "metric"
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&units=${units}&appid=${apikey}`;
+ 
+  axios.get(url).then(updateTime);
+}                                    
+//
+// change Icon
+//
+function changeIconColor(iconName) {
   let icon = document.querySelector("#iconT");
   icon.classList.remove("dayIcon", "nightIcon");
 
-  if (iconName.endsWith("d")) {
-    icon.classList.add("dayIcon");
-  } else {
+  if (iconName.endsWith("night")) {
     icon.classList.add("nightIcon");
+  } else {
+    icon.classList.add("dayIcon");
   }
-
-  changeDayIcon(iconName);
 }
 
-function changeDayIcon(iconName) {
+function changeIcon(iconName) {
   let name = iconName;
-  let iconID = name.substring(0, 2);
-
-  if (iconID === "01") {
+  let nameboth = name.substring(0, 2);
+  if (name === "clear-sky-day") {
     document.querySelector("#iconT").innerHTML = "wb_sunny";
   }
-
-  if (iconID === "02") {
+  if (name === "clear-sky-night") {
+    document.querySelector("#iconT").innerHTML = " nightlight";
+  }
+  if (name === "few-clouds-day") {
     document.querySelector("#iconT").innerHTML = "partly_cloudy_day";
   }
 
-  if (iconID === "03") {
+  if (name === "few-clouds-night") {
+    document.querySelector("#iconT").innerHTML = "partly_cloudy_night";
+  }
+
+  if (nameboth === "sca") {
     document.querySelector("#iconT").innerHTML = "cloud";
   }
 
-  if (iconID === "04") {
-    document.querySelector("#iconT").innerHTML = "filter_drama";
+  if (name === "bro") {
+    document.querySelector("#iconT").innerHTML = " filter_drama";
   }
 
-  if (iconID === "09") {
-    document.querySelector("#iconT").innerHTML = " rainy_light";
-  }
-
-  if (iconID === "10") {
+  if (name === "sho") {
     document.querySelector("#iconT").innerHTML = "rainy";
   }
 
-  if (iconID === "11") {
-    document.querySelector("#iconT").innerHTML = "thunderstorm";
+  if (name === "rai") {
+    document.querySelector("#iconT").innerHTML = "cloudy_snowing ";
   }
 
-  if (iconID === "13") {
-    document.querySelector("#iconT").innerHTML = " cloudy_snowing";
+  if (name === "thu") {
+    document.querySelector("#iconT").innerHTML = " thunderstorm";
   }
 
-  if (iconID === "50") {
+  if (name === "sno") {
+    document.querySelector("#iconT").innerHTML = "weather_snowy ";
+  }
+
+  if (name === "mis") {
     document.querySelector("#iconT").innerHTML = "foggy";
   }
+  changeIconColor(iconName);
 }
+//
+// above
+//
+//
+//
+
+//
+//all
+//
+//
+///
+//done#
+//
+//
+//
+//change icon
+
+
 //
 //
 //
 //update forecast
+
+
+function getForecastData(city) {
+let apiKey = "5101b1tb3fba4e5cedfo0b346a6ccc32";
+let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apikey}`;
+axios.get(apiUrl).then(displayForecast);
+}
+
+
+
 function updateforecast() {
   let forecastsection = document.querySelector("#forecast");
   let days = ["Day1", "Day2", "Day3", "Day4", "Day5", "Day6"];
   let forecastHtml = "";
-  0;
   days.forEach(function (day) {
     forecastHtml =
       forecastHtml +
@@ -134,99 +177,111 @@ function updateforecast() {
     forecastsection.innerHTML = forecastHtml;
   });
 }
+//function displayForecast() {
+// 
+// }
 
-//function getForecastData(coordinates) {
-// let lons = coordinates.lon;
-// let lats = coordinates.lat;
-// let apikey = "a5c55c774ac8198c087358853c4a79a9";
-// let units = "metric"; // or let units = "metric"
-// let url = `https://api.openweathermap.org/data/3.0/onecall?lat=
-//${lats}&lon=${lons}&units=${units}&appid=${apikey}`;
 
-//  console.log(url);
-// https: axios.get(url).then(cityInfo);
-//}
+
 // City search Buttons
 
 function cityInfo(cityInformation) {
-  document.querySelector("#main-city").innerHTML = cityInformation.data.name;
+  //do
+
+  document.querySelector("#main-city").innerHTML = cityInformation.data.city;
   document.querySelector("#weather-now").innerHTML =
-    cityInformation.data.weather[0].description;
+    cityInformation.data.condition.description;
   document.querySelector("#feels").innerHTML = Math.round(
-    cityInformation.data.main.feels_like
+    cityInformation.data.temperature.feels_like
   );
   document.querySelector("#humid").innerHTML =
-    cityInformation.data.main.humidity;
+    cityInformation.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     cityInformation.data.wind.speed
   );
-  celsiusTemperature = cityInformation.data.main.temp;
+  celsiusTemperature = cityInformation.data.temperature.current;
   document.querySelector("#today-temperature").innerHTML =
     Math.round(celsiusTemperature);
-
-  updateTime(cityInformation.data.timezone);
-  changeIcon(cityInformation.data.weather[0].icon);
-  //getForecastData(cityInformation.data.coord);
+  updateTimeApi(cityInformation.data.city);
+  changeIcon(cityInformation.data.condition.icon);
   updateforecast();
+  getForecastData(cityInformation.data.city);
+  //
+  //
+  //
+  ////TODO
+  //
+  //
+  //
+  //
+  //;
+  //
+  //
+  //
+  //
 }
 
 function getInputCity(city) {
-  let apikey = "a5c55c774ac8198c087358853c4a79a9";
+  //done
+  let apikey = "5101b1tb3fba4e5cedfo0b346a6ccc32";
   let units = "metric"; // or let units = "metric"
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apikey}`;
-
+  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apikey}&units=${units}`;
+  
   axios.get(url).then(cityInfo);
-}
+} //done
 
 function getCurrentCity(currentCity) {
+  //done
   let lat = currentCity.coords.latitude;
   let lon = currentCity.coords.longitude;
-  let apikey = "a5c55c774ac8198c087358853c4a79a9";
+  let apikey = "5101b1tb3fba4e5cedfo0b346a6ccc32";
   let units = "metric"; // or let units = "metric"
-  let latlonUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apikey}`;
-  axios.get(latlonUrl).then(cityInfo);
+  let latlonUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apikey}&units=${units}`;
+  axios.get(latlonUrl).then(cityInfo); //done
 }
 
 function citySubmit(event) {
+  //done
   event.preventDefault();
   let city = document.querySelector("#search-input").value;
-  getInputCity(city);
+  getInputCity(city); //done
 }
 function currentSubmit(event) {
+  //done
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getCurrentCity);
-}
+} //done
 // change temperature
 
 function changetoFahrenheit(event) {
+  //done
   event.preventDefault();
   let temperatureElement = document.querySelector("#today-temperature");
   let fahrenheit = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheit);
   document.querySelector("#celsius").classList.add("notactive");
   document.querySelector("#fahrenheit").classList.remove("notactive");
-}
+} //done
 
 function changetoCelsius(event) {
+  //done
   event.preventDefault();
   let temperatureElement = document.querySelector("#today-temperature");
-
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   document.querySelector("#fahrenheit").classList.add("notactive");
   document.querySelector("#celsius").classList.remove("notactive");
-}
+} //done
 
 //
 
 let celsiusTemperature = null;
 document
   .querySelector("#fahrenheit")
-  .addEventListener("click", changetoFahrenheit);
-document.querySelector("#celsius").addEventListener("click", changetoCelsius);
-
-document.querySelector("#search-form").addEventListener("submit", citySubmit);
+  .addEventListener("click", changetoFahrenheit); //done
+document.querySelector("#celsius").addEventListener("click", changetoCelsius); //done
+document.querySelector("#search-form").addEventListener("submit", citySubmit); //done
 document
   .querySelector("#current-search-button")
-  .addEventListener("click", currentSubmit);
+  .addEventListener("click", currentSubmit); //done
 
 getInputCity("Sydney");
