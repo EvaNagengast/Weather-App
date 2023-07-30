@@ -1,7 +1,7 @@
 // current time
 //
 
-function updateTime(apiInfo) {      
+function updateTime(apiInfo) {
   let months = [
     // "Jan",  "Feb",  "Mar",  "Apr",  "May",  "Jun",  "Jul",  "Aug",  "Sep",  "Oct",  "Nov",  "Dec",
     "January",
@@ -53,16 +53,15 @@ function updateTime(apiInfo) {
   document.querySelector(
     "#current-time"
   ).innerHTML = `${day}, ${date}.${month}, ${hour}:${minute}`;
-} 
+}
 
-
-function updateTimeApi(cityname) {          
+function updateTimeApi(cityname) {
   let apikey = "a5c55c774ac8198c087358853c4a79a9";
   let units = "metric"; // or let units = "metric"
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&units=${units}&appid=${apikey}`;
- 
+
   axios.get(url).then(updateTime);
-}                                    
+}
 //
 // change Icon
 //
@@ -140,35 +139,35 @@ function changeIcon(iconName) {
 //
 //change icon
 
-
 //
 //
 //
 //update forecast
 
-
 function getForecastData(city) {
-let apiKey = "5101b1tb3fba4e5cedfo0b346a6ccc32";
-let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apikey}`;
-axios.get(apiUrl).then(displayForecast);
+  let apiKey = "5101b1tb3fba4e5cedfo0b346a6ccc32";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
-
-
-function updateforecast() {
+function displayForecast(apiInfo) {
+  let forecastarray = apiInfo.data.daily;
   let forecastsection = document.querySelector("#forecast");
-  let days = ["Day1", "Day2", "Day3", "Day4", "Day5", "Day6"];
+  
+
   let forecastHtml = "";
-  days.forEach(function (day) {
+
+  forecastarray.forEach(function (info) {
+    console.log(info)
     forecastHtml =
       forecastHtml +
       `  <li>
     <div class="row">
-      <div class="col-6">Icon</div>
+      <div class="col-6">${info.condition.icon}</div>
       <div class="col-6">
-        ${day}
+        weekday
         <br />
-        temp
+        ${Math.round(info.temperature.day)}
       </div>
     </div>
   </li>
@@ -178,10 +177,8 @@ function updateforecast() {
   });
 }
 //function displayForecast() {
-// 
+//
 // }
-
-
 
 // City search Buttons
 
@@ -204,7 +201,7 @@ function cityInfo(cityInformation) {
     Math.round(celsiusTemperature);
   updateTimeApi(cityInformation.data.city);
   changeIcon(cityInformation.data.condition.icon);
-  updateforecast();
+
   getForecastData(cityInformation.data.city);
   //
   //
@@ -226,7 +223,7 @@ function getInputCity(city) {
   let apikey = "5101b1tb3fba4e5cedfo0b346a6ccc32";
   let units = "metric"; // or let units = "metric"
   let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apikey}&units=${units}`;
-  
+
   axios.get(url).then(cityInfo);
 } //done
 
