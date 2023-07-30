@@ -1,33 +1,30 @@
-//
-//
 // current time
-let months = [
-  // "Jan",  "Feb",  "Mar",  "Apr",  "May",  "Jun",  "Jul",  "Aug",  "Sep",  "Oct",  "Nov",  "Dec",
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let days = [
-  //"Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
 function updateTime(cityTimeShift) {
+  let months = [
+    // "Jan",  "Feb",  "Mar",  "Apr",  "May",  "Jun",  "Jul",  "Aug",  "Sep",  "Oct",  "Nov",  "Dec",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let days = [
+    //"Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   let now = new Date();
 
   if (cityTimeShift !== undefined) {
@@ -54,13 +51,8 @@ function updateTime(cityTimeShift) {
     "#current-time"
   ).innerHTML = `${day}, ${date}.${month}, ${hour}:${minute}`;
 }
-//
-//
-//
+
 //change icon
-//
-//
-//
 
 function changeIcon(iconName) {
   let icon = document.querySelector("#iconT");
@@ -115,15 +107,48 @@ function changeDayIcon(iconName) {
     document.querySelector("#iconT").innerHTML = "foggy";
   }
 }
+//
+//
+//
+//update forecast
+function updateforecast() {
+  let forecastsection = document.querySelector("#forecast");
+  let days = ["Day1", "Day2", "Day3", "Day4", "Day5", "Day6"];
+  let forecastHtml = "";
+  0;
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `  <li>
+    <div class="row">
+      <div class="col-6">Icon</div>
+      <div class="col-6">
+        ${day}
+        <br />
+        temp
+      </div>
+    </div>
+  </li>
+    `;
 
-//
-//
+    forecastsection.innerHTML = forecastHtml;
+  });
+}
+
+//function getForecastData(coordinates) {
+// let lons = coordinates.lon;
+// let lats = coordinates.lat;
+// let apikey = "a5c55c774ac8198c087358853c4a79a9";
+// let units = "metric"; // or let units = "metric"
+// let url = `https://api.openweathermap.org/data/3.0/onecall?lat=
+//${lats}&lon=${lons}&units=${units}&appid=${apikey}`;
+
+//  console.log(url);
+// https: axios.get(url).then(cityInfo);
+//}
 // City search Buttons
-//
-//
 
 function cityInfo(cityInformation) {
-  console.log(cityInformation);
   document.querySelector("#main-city").innerHTML = cityInformation.data.name;
   document.querySelector("#weather-now").innerHTML =
     cityInformation.data.weather[0].description;
@@ -141,6 +166,8 @@ function cityInfo(cityInformation) {
 
   updateTime(cityInformation.data.timezone);
   changeIcon(cityInformation.data.weather[0].icon);
+  //getForecastData(cityInformation.data.coord);
+  updateforecast();
 }
 
 function getInputCity(city) {
@@ -177,7 +204,7 @@ function changetoFahrenheit(event) {
   let fahrenheit = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheit);
   document.querySelector("#celsius").classList.add("notactive");
-    document.querySelector("#fahrenheit").classList.remove("notactive");
+  document.querySelector("#fahrenheit").classList.remove("notactive");
 }
 
 function changetoCelsius(event) {
@@ -186,8 +213,10 @@ function changetoCelsius(event) {
 
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   document.querySelector("#fahrenheit").classList.add("notactive");
-    document.querySelector("#celsius").classList.remove("notactive");
+  document.querySelector("#celsius").classList.remove("notactive");
 }
+
+//
 
 let celsiusTemperature = null;
 document

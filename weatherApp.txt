@@ -1,0 +1,9 @@
+to do for forecast:
+- add Icons etc html (use fake data first)
+- add CSS for forecast
+-add new api call for forecast
+-add JS: replace dummy content with real data
+-
+-
+-
+-
