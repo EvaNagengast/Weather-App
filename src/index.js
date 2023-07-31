@@ -77,9 +77,9 @@ function changeIconColor(iconName) {
 }
 
 function changeIcon(iconName) {
- let iconValue = iconMap[iconName];
- let icon = document.querySelector("#iconT");
- icon.innerHTML = iconValue;
+  let iconValue = iconMap[iconName];
+  let icon = document.querySelector("#iconT");
+  icon.innerHTML = iconValue;
 
   changeIconColor(iconName);
 }
@@ -138,54 +138,76 @@ function displayForecast(apiInfo) {
   forecastHtml =
     forecastHtml +
     `  <li> <div class="row">
-      <div class="col-6"><span class="material-symbols-outlined">${getHTMLIcon(
+      <div class="col-5 iconDiv"><span class="material-symbols-outlined forecastIcon">${getHTMLIcon(
         forecastarray[0].condition.icon
       )}</span></div>
-      <div class="col-6">
+      <div class="col-7">
          ${forecastDays(forecastarray[0].time)}
-        <br />
-        ${Math.round(forecastarray[0].temperature.maximum)} | ${Math.round(
+        <br /><strong>
+        ${Math.round(
+          forecastarray[0].temperature.maximum
+        )}</strong> | ${Math.round(
       forecastarray[0].temperature.minimum
     )}  </div>  </div> </li> ` +
     `  <li> <div class="row">
-      <div class="col-6"><span class="material-symbols-outlined">${getHTMLIcon(
+      <div class="col-5"><span class="material-symbols-outlined forecastIcon">${getHTMLIcon(
         forecastarray[1].condition.icon
       )}</span></div>
-      <div class="col-6">
+      <div class="col-7">
          ${forecastDays(forecastarray[1].time)}
-        <br />
-        ${Math.round(forecastarray[1].temperature.maximum)} | ${Math.round(
+        <br /><strong>
+        ${Math.round(
+          forecastarray[1].temperature.maximum
+        )}</strong> | ${Math.round(
       forecastarray[1].temperature.minimum
     )}  </div>  </div> </li> ` +
     `  <li> <div class="row">
-      <div class="col-6"><span class="material-symbols-outlined">${getHTMLIcon(
+      <div class="col-5"><span class="material-symbols-outlined forecastIcon">${getHTMLIcon(
         forecastarray[2].condition.icon
       )}</span></div>
-      <div class="col-6">
+      <div class="col-7">
          ${forecastDays(forecastarray[2].time)}
-        <br />
-        ${Math.round(forecastarray[2].temperature.maximum)} | ${Math.round(
+        <br /><strong>
+        ${Math.round(
+          forecastarray[2].temperature.maximum
+        )}</strong> | ${Math.round(
       forecastarray[2].temperature.minimum
     )}  </div>  </div> </li> ` +
     `  <li> <div class="row">
-      <div class="col-6"><span class="material-symbols-outlined">${getHTMLIcon(
+      <div class="col-5"><span class="material-symbols-outlined forecastIcon">${getHTMLIcon(
         forecastarray[3].condition.icon
       )}</span></div>
-      <div class="col-6">
+      <div class="col-7">
          ${forecastDays(forecastarray[3].time)}
-        <br />
-        ${Math.round(forecastarray[3].temperature.maximum)} | ${Math.round(
+        <br /><strong>
+        ${Math.round(
+          forecastarray[3].temperature.maximum
+        )}</strong> | ${Math.round(
       forecastarray[3].temperature.minimum
     )}  </div>  </div> </li> ` +
     `  <li> <div class="row">
-      <div class="col-6"><span class="material-symbols-outlined">${getHTMLIcon(
+      <div class="col-5"><span class="material-symbols-outlined forecastIcon">${getHTMLIcon(
         forecastarray[4].condition.icon
       )}</span></div>
-      <div class="col-6">
+      <div class="col-7">
          ${forecastDays(forecastarray[4].time)}
-        <br />
-        ${Math.round(forecastarray[4].temperature.maximum)} | ${Math.round(
+        <br /><strong>
+        ${Math.round(
+          forecastarray[4].temperature.maximum
+        )}</strong> | ${Math.round(
       forecastarray[4].temperature.minimum
+    )}  </div>  </div> </li> ` +
+    `  <li> <div class="row">
+      <div class="col-5"><span class="material-symbols-outlined forecastIcon">${getHTMLIcon(
+        forecastarray[5].condition.icon
+      )}</span></div>
+      <div class="col-7">
+         ${forecastDays(forecastarray[5].time)}
+        <br /><strong>
+        ${Math.round(
+          forecastarray[5].temperature.maximum
+        )}</strong> | ${Math.round(
+      forecastarray[5].temperature.minimum
     )}  </div>  </div> </li> `;
 
   forecastsection.innerHTML = forecastHtml;
