@@ -2,7 +2,7 @@
 //
 
 function updateTime(apiInfo) {
-  console.log(apiInfo)
+  console.log(apiInfo);
   let months = [
     // "Jan",  "Feb",  "Mar",  "Apr",  "May",  "Jun",  "Jul",  "Aug",  "Sep",  "Oct",  "Nov",  "Dec",
     "January",
@@ -54,7 +54,6 @@ function updateTime(apiInfo) {
   document.querySelector(
     "#current-time"
   ).innerHTML = `${day}, ${date}.${month}, ${hour}:${minute}`;
-
 }
 
 function updateTimeApi(cityname) {
@@ -124,24 +123,7 @@ function changeIcon(iconName) {
   }
   changeIconColor(iconName);
 }
-//
-// above
-//
-//
-//
 
-//
-//all
-//
-//
-///
-//done#
-//
-//
-//
-//change icon
-
-//
 //
 //
 //update forecast
@@ -153,16 +135,12 @@ function getForecastData(city) {
 }
 
 function forecastDays(timestamp) {
-  
-let date = new Date (timestamp *1000);
-let day = date.getDay();
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
 
-let days = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat","Sun"  ];  //"Sunday","Monday","Tuesday", "Wednesday","Thursday","Friday","Saturday"
+  let days = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"]; //"Sunday","Monday","Tuesday", "Wednesday","Thursday","Friday","Saturday"
   return days[day];
 }
-
-
-
 
 function displayForecast(apiInfo) {
   let forecastarray = apiInfo.data.daily;
@@ -170,26 +148,26 @@ function displayForecast(apiInfo) {
   let forecastHtml = "";
 
   forecastarray.forEach(function (info, index) {
-    if (index < 4){
-        forecastHtml =
-      
-          forecastHtml +
-          `  <li> <div class="row">
+    if (index < 4) {
+      forecastHtml =
+        forecastHtml +
+        `  <li> <div class="row">
       <div class="col-6">${info.condition.icon}</div>
       <div class="col-6">
          ${forecastDays(info.time)}
         <br />
         ${Math.round(info.temperature.maximum)} | ${Math.round(
-            info.temperature.minimum
-          )}  </div>  </div> </li> `;}
-    
-  });forecastsection.innerHTML = forecastHtml}
-
+          info.temperature.minimum
+        )}  </div>  </div> </li> `;
+    }
+  });
+  forecastsection.innerHTML = forecastHtml;
+}
+//
+//
 // City search Buttons
 
 function cityInfo(cityInformation) {
-  //do
-
   document.querySelector("#main-city").innerHTML = cityInformation.data.city;
   document.querySelector("#weather-now").innerHTML =
     cityInformation.data.condition.description;
@@ -207,82 +185,44 @@ function cityInfo(cityInformation) {
   updateTimeApi(cityInformation.data.city);
   changeIcon(cityInformation.data.condition.icon);
   getForecastData(cityInformation.data.city);
-
 }
-  //
-  //
-  //
-  ////TODO
-  //
-  //
-  //
-  //
-  //;
-  //
-  //
-  //
-  //
+
+//
+//
+//update city
+
 function getInputCity(city) {
-  //done
   let apikey = "5101b1tb3fba4e5cedfo0b346a6ccc32";
   let units = "metric"; // or let units = "metric"
   let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apikey}&units=${units}`;
 
   axios.get(url).then(cityInfo);
-} //done
+}
 
 function getCurrentCity(currentCity) {
-  //done
   let lat = currentCity.coords.latitude;
   let lon = currentCity.coords.longitude;
   let apikey = "5101b1tb3fba4e5cedfo0b346a6ccc32";
   let units = "metric"; // or let units = "metric"
   let latlonUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apikey}&units=${units}`;
-  axios.get(latlonUrl).then(cityInfo); //done
+  axios.get(latlonUrl).then(cityInfo);
 }
 
 function citySubmit(event) {
-  //done
   event.preventDefault();
   let city = document.querySelector("#search-input").value;
-  getInputCity(city); //done
+  getInputCity(city);
 }
 function currentSubmit(event) {
-  //done
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getCurrentCity);
-} //done
-// change temperature
+}
 
-function changetoFahrenheit(event) {
-  //done
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#today-temperature");
-  let fahrenheit = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheit);
-  document.querySelector("#celsius").classList.add("notactive");
-  document.querySelector("#fahrenheit").classList.remove("notactive");
-} //done
 
-function changetoCelsius(event) {
-  //done
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#today-temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-  document.querySelector("#fahrenheit").classList.add("notactive");
-  document.querySelector("#celsius").classList.remove("notactive");
-} //done
+//let celsiusTemperature = null;
 
-//
-
-let celsiusTemperature = null;
-document
-  .querySelector("#fahrenheit")
-  .addEventListener("click", changetoFahrenheit); //done
-document.querySelector("#celsius").addEventListener("click", changetoCelsius); //done
-document.querySelector("#search-form").addEventListener("submit", citySubmit); //done
-document
-  .querySelector("#current-search-button")
-  .addEventListener("click", currentSubmit); //done
+document.querySelector("#search-form").addEventListener("submit", citySubmit);
+document.querySelector("#current-search-button")
+  .addEventListener("click", currentSubmit);
 
 getInputCity("Sydney");

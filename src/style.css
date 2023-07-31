@@ -67,7 +67,8 @@ h1 {
   display: inline-block;
 }
 
-.todayUnit {
+.celsius {
+  font-weight: bolder;
   display: inline-block;
   font-size: 16px;
   line-height: 50px;
@@ -75,21 +76,10 @@ h1 {
   padding-left: 6px;
   vertical-align: top;
 }
-.celsius,
-.fahrenheit {
-  font-weight: bolder;
-}
 .notactive {
   color: rgba(0, 0, 0, 0.288);
 }
-.celsius:hover {
-  cursor: pointer;
-  color: #ffe46a;
-}
-.fahrenheit:hover {
-  cursor: pointer;
-  color: #ffe46a;
-}
+
 /* display weather conditions */
 p {
   font-size: 25px;
