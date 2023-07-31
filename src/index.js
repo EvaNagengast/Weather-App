@@ -150,24 +150,46 @@ function getForecastData(city) {
   axios.get(apiUrl).then(displayForecast);
 }
 
+function forecastDays() {
+  let days = [
+    //"Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let now = new Date();
+  let day1 = days[now.getDay() + 1];
+  let day2 = days[now.getDay() + 2];
+  let day3 = days[now.getDay() + 3];
+  let day4 = days[now.getDay() + 4];
+  let day5 = days[now.getDay() + 5];
+  let day6 = days[now.getDay() + 6];
+
+  return [day1, day2, day3, day4, day5, day6];
+}
+
 function displayForecast(apiInfo) {
   let forecastarray = apiInfo.data.daily;
   let forecastsection = document.querySelector("#forecast");
-  
 
   let forecastHtml = "";
 
   forecastarray.forEach(function (info) {
-    console.log(info)
     forecastHtml =
       forecastHtml +
       `  <li>
     <div class="row">
       <div class="col-6">${info.condition.icon}</div>
       <div class="col-6">
-        weekday
+        {day} ${forecastDays()}
         <br />
-        ${Math.round(info.temperature.day)}
+        ${Math.round(info.temperature.maximum)} | ${Math.round(
+        info.temperature.minimum
+      )}
       </div>
     </div>
   </li>
@@ -176,9 +198,6 @@ function displayForecast(apiInfo) {
     forecastsection.innerHTML = forecastHtml;
   });
 }
-//function displayForecast() {
-//
-// }
 
 // City search Buttons
 
