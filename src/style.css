@@ -129,15 +129,17 @@ p {
   border-radius: 8px;
 }
 
-.tips {
+
+
+/* info box */
+/* tip box */
+.tips {text-align: center;
+  padding: 9px 0 9px 0;
   margin: 8px auto;
   border: 3px solid #8c8f8f00;
   box-shadow: 0px 0px 5px 1px #ffffff4f;
   min-height: 100px;
 }
-
-/* info box */
-/* tip box */
 /* right side */
 /* search */
 

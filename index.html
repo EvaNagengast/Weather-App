@@ -77,9 +77,8 @@
             </div>
             <div class="col-7">
               <div class="todayTemperature" id="today-temperature">0</div>
-          
-                <span class="celsius" id="celsius">°C </span>
-              
+
+              <span class="celsius" id="celsius">°C </span>
             </div>
           </div>
 
@@ -89,7 +88,8 @@
           <div class="weatherCondition">
             <ul class="listWeatherCondition">
               <li class="feels">
-                <span class="material-symbols-outlined decorationl"> cloud </span
+                <span class="material-symbols-outlined decorationl">
+                  cloud </span
                 >feels like: <span id="feels">0</span>C<span
                   class="material-symbols-outlined decorationr"
                 >
@@ -97,7 +97,8 @@
                 </span>
               </li>
               <li class="humid">
-                <span class="material-symbols-outlined decorationl"> cloud </span
+                <span class="material-symbols-outlined decorationl">
+                  cloud </span
                 >Humidity: <span id="humid"></span>%<span
                   class="material-symbols-outlined decorationr"
                 >
@@ -105,7 +106,8 @@
                 </span>
               </li>
               <li class="wind">
-                <span class="material-symbols-outlined decorationl"> cloud </span
+                <span class="material-symbols-outlined decorationl">
+                  cloud </span
                 >wind: <span id="wind">0</span>km/h<span
                   class="material-symbols-outlined decorationr"
                 >
@@ -114,13 +116,13 @@
               </li>
             </ul>
           </div>
-          <div class="tips">Tips for the weather</div>
+          <div id="tip-box" class="tips">Tips for the weather</div>
         </div>
         <!-- right column -->
         <div class="col-6">
           <!-- city search -->
-          <div class=" search">
-            <form  id="search-form" class = "searchForm">
+          <div class="search">
+            <form id="search-form" class="searchForm">
               <input
                 type="text"
                 placeholder="City"
@@ -136,25 +138,21 @@
                 id="city-search-button"
               />
 
-
-<button
-            type="button"
-            value="current"
-            class="currentSearchButton"
-            id="current-search-button"
-          >
-            pin
-          </button>
-
-            </form>  
+              <button
+                type="button"
+                value="current"
+                class="currentSearchButton"
+                id="current-search-button"
+              >
+                pin
+              </button>
+            </form>
           </div>
 
-        
           <!-- <button type="button" value="current" class="moonButton">moon</button> -->
           <!-- forecast -->
-          <ul class = "forecastlist" id="forecast" >
-        
-         <!-- JS forecast list -->
+          <ul class="forecastlist" id="forecast">
+            <!-- JS forecast list -->
           </ul>
         </div>
       </div>

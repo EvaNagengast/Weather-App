@@ -212,6 +212,76 @@ function displayForecast(apiInfo) {
 
   forecastsection.innerHTML = forecastHtml;
 }
+//
+//
+//
+// change Tips
+
+function changeTips(condition) {
+  let conditionName = condition.icon;
+  let tipbox = document.querySelector("#tip-box");
+  if (conditionName === "clear-sky-day") {
+   tipbox.innerHTML = "Enjoy the sunny day! <bt /> don't forget the sunscreen";
+  }
+  if (conditionName === "clear-sky-night") {
+    tipbox.innerHTML =
+      "Admire the starry night!<br /> Enjoy stargazing and a warm cup of cocoa";
+  }
+  if (conditionName === "few-clouds-day") {
+    tipbox.innerHTML =
+      "Bring a light jacket. <br /> Few clouds won't spoil your outdoor plans, but keep an eye on the sky";
+  }
+  if (conditionName === "few-clouds-night") {
+    tipbox.innerHTML = "Look at the stars through the clouds!";
+  }
+  if (conditionName === "scattered-clouds-day") {
+    tipbox.innerHTML =
+      "Patchy clouds might bring a nice breeze! <br /> A mix of sun and shade";
+  }
+  if (conditionName === " scattered-clouds-night") {
+    tipbox.innerHTML = "Stargazing might be possible tonight!";
+  }
+  if (conditionName === "broken-clouds-day") {
+    tipbox.innerHTML =
+      "Cloudy but not gloomy! <br /> Enjoy some fresh air.";
+  }
+  if (conditionName === "broken-clouds-night") {
+    tipbox.innerHTML = "Partly cloudy night for stargazing... <br /> ... or a comfy movienight!";
+  }
+  if (conditionName === "shower-rain-day") {
+    tipbox.innerHTML = "Don't forget your umbrella!";
+  }
+  if (conditionName === "shower-rain-night") {
+    tipbox.innerHTML = "Better stay indoors and cozy!";
+  }
+  if (conditionName === "rain-day") {
+    tipbox.innerHTML = "Time to wear your raincoat!";
+  }
+  if (conditionName === "rain-night") {
+    tipbox.innerHTML =
+      "Snuggle up indoors with a good book!";
+  }
+  if (conditionName === "thunderstorm-day") {
+    tipbox.innerHTML =
+      "Be cautious during thunderstorms, stay safe indoors... <br /> and outdoors stay away from tall objects!";
+  }
+  if (conditionName === "thunderstorm-night") {
+    tipbox.innerHTML = "Enjoy the thrilling lightning show!";
+  }
+  if (conditionName === "snow-day") {
+    tipbox.innerHTML = "Bundle up, it's snowy outside!";
+  }
+  if (conditionName === "snow-night") {
+    tipbox.innerHTML =
+      "Cozy up at home and enjoy the winter wonderland!";
+  }
+  if (conditionName === "mist-day") {
+    tipbox.innerHTML = "Be careful where you walk!<br /> Drive carefully!";
+  }
+  if (conditionName === "mist-night") {
+    tipbox.innerHTML = "Enjoy the mysterious misty night";
+  }
+}
 
 //
 //
@@ -235,6 +305,7 @@ function cityInfo(cityInformation) {
   updateTimeApi(cityInformation.data.city);
   changeIcon(cityInformation.data.condition.icon);
   getForecastData(cityInformation.data.city);
+  changeTips(cityInformation.data.condition);
 }
 
 //
