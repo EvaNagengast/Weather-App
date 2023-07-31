@@ -2,6 +2,7 @@
 //
 
 function updateTime(apiInfo) {
+  console.log(apiInfo)
   let months = [
     // "Jan",  "Feb",  "Mar",  "Apr",  "May",  "Jun",  "Jul",  "Aug",  "Sep",  "Oct",  "Nov",  "Dec",
     "January",
@@ -53,6 +54,7 @@ function updateTime(apiInfo) {
   document.querySelector(
     "#current-time"
   ).innerHTML = `${day}, ${date}.${month}, ${hour}:${minute}`;
+
 }
 
 function updateTimeApi(cityname) {
@@ -150,54 +152,38 @@ function getForecastData(city) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-function forecastDays() {
-  let days = [
-    //"Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let now = new Date();
-  let day1 = days[now.getDay() + 1];
-  let day2 = days[now.getDay() + 2];
-  let day3 = days[now.getDay() + 3];
-  let day4 = days[now.getDay() + 4];
-  let day5 = days[now.getDay() + 5];
-  let day6 = days[now.getDay() + 6];
+function forecastDays(timestamp) {
+  
+let date = new Date (timestamp *1000);
+let day = date.getDay();
 
-  return [day1, day2, day3, day4, day5, day6];
+let days = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat","Sun"  ];  //"Sunday","Monday","Tuesday", "Wednesday","Thursday","Friday","Saturday"
+  return days[day];
 }
+
+
+
 
 function displayForecast(apiInfo) {
   let forecastarray = apiInfo.data.daily;
   let forecastsection = document.querySelector("#forecast");
-
   let forecastHtml = "";
 
-  forecastarray.forEach(function (info) {
-    forecastHtml =
-      forecastHtml +
-      `  <li>
-    <div class="row">
+  forecastarray.forEach(function (info, index) {
+    if (index < 4){
+        forecastHtml =
+      
+          forecastHtml +
+          `  <li> <div class="row">
       <div class="col-6">${info.condition.icon}</div>
       <div class="col-6">
-        {day} ${forecastDays()}
+         ${forecastDays(info.time)}
         <br />
         ${Math.round(info.temperature.maximum)} | ${Math.round(
-        info.temperature.minimum
-      )}
-      </div>
-    </div>
-  </li>
-    `;
-
-    forecastsection.innerHTML = forecastHtml;
-  });
-}
+            info.temperature.minimum
+          )}  </div>  </div> </li> `;}
+    
+  });forecastsection.innerHTML = forecastHtml}
 
 // City search Buttons
 
@@ -220,8 +206,9 @@ function cityInfo(cityInformation) {
     Math.round(celsiusTemperature);
   updateTimeApi(cityInformation.data.city);
   changeIcon(cityInformation.data.condition.icon);
-
   getForecastData(cityInformation.data.city);
+
+}
   //
   //
   //
@@ -235,8 +222,6 @@ function cityInfo(cityInformation) {
   //
   //
   //
-}
-
 function getInputCity(city) {
   //done
   let apikey = "5101b1tb3fba4e5cedfo0b346a6ccc32";
